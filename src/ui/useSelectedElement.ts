@@ -1,12 +1,12 @@
 import { AssetTypes, onMessage } from '@qatium/plugin/ui';
 import { useEffect, useState } from 'react';
-import { Message, SelectedElement } from '../plugin/types';
+import { MessageToUI, SelectedElement } from '../communication/messages';
 
 export const useSelectedElement = () => {
   const [selectedElement, setSelectedElement] = useState<SelectedElement>()
 
   useEffect(() => {
-    const { removeListener } = onMessage<Message>((msg) => {
+    const { removeListener } = onMessage<MessageToUI>((msg) => {
       if (msg.event !== "selected-element") {
         return;
       }

@@ -1,6 +1,6 @@
 import { mockSDK, aValve } from "@qatium/sdk-testing-library";
 import { Engine } from './engine';
-import { Message } from './types';
+import { MessageToEngine } from "../communication/messages";
 
 describe("Engine", () => {
   describe("onMessage", () => {
@@ -15,7 +15,7 @@ describe("Engine", () => {
       });
 
       const engine = new Engine();
-      const message: Message = {
+      const message: MessageToEngine = {
         event: "close-valve",
         valveId: "V1"
       };

@@ -1,13 +1,13 @@
 import { sendMessage } from '@qatium/plugin/ui';
-import { Message } from '../plugin/types';
 import './App.css';
 import { useSelectedElement } from './useSelectedElement';
+import { MessageToEngine } from '../communication/messages';
 
 function App() {
   const selectedElement = useSelectedElement();
 
   const closeValve = (valveId: string) => {
-    sendMessage<Message>({
+    sendMessage<MessageToEngine>({
       event: "close-valve",
       valveId
     })

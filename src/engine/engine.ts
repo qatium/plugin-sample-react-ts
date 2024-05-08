@@ -1,7 +1,7 @@
 import { PluginI, SDK } from "@qatium/plugin/engine";
-import { Message } from './types';
+import { MessageToEngine, MessageToUI } from '../communication/messages';
 
-export class Engine implements PluginI<Message> {
+export class Engine implements PluginI<MessageToEngine> {
   selectedElement: ReturnType<SDK["map"]["getSelectedElement"]>;
 
   run(sdk: SDK) {
@@ -13,13 +13,13 @@ export class Engine implements PluginI<Message> {
 
     this.selectedElement = newSelectedElement;
 
-    return sdk.ui.sendMessage<Message>({
+    return sdk.ui.sendMessage<MessageToUI>({
       event: "selected-element",
       selectedElement: newSelectedElement
     })
   }
 
-  onMessage(sdk: SDK, message: Message) {
+  onMessage(sdk: SDK, message: MessageToEngine) {
     if (message.event !== "close-valve") {
       return;
     }

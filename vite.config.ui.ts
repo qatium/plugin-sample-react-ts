@@ -1,27 +1,40 @@
-import { defineConfig } from "vite"
-import { viteSingleFile } from "vite-plugin-singlefile"
-import react from '@vitejs/plugin-react'
+import { defineConfig } from "vite";
+import { viteSingleFile } from "vite-plugin-singlefile";
+import react from "@vitejs/plugin-react";
 
 export default defineConfig(() => {
   return {
+    root: "./src/ui",
+    publicDir: "../public",
     build: {
+      outDir: "../../dist",
       emptyOutDir: false
     },
-    plugins: [viteSingleFile(), react(), {
-      name: "configure-response-headers",
-      configureServer: server => {
-        server.middlewares.use((_req, res, next) => {
-          res.setHeader("Access-Control-Request-Private-Network", "true");
-          res.setHeader("Access-Control-Allow-Private-Network", "true");
-          res.setHeader("Access-Control-Expose-Headers", "ETag")
-          next();
-        });
+    plugins: [
+      viteSingleFile(),
+      react(),
+      {
+        name: "configure-response-headers",
+        configureServer: (server) => {
+          server.middlewares.use((_req, res, next) => {
+            res.setHeader("Access-Control-Request-Private-Network", "true");
+            res.setHeader("Access-Control-Allow-Private-Network", "true");
+            res.setHeader("Access-Control-Expose-Headers", "ETag");
+            next();
+          });
+        }
       }
-    }],
+    ],
     server: {
       port: 8888,
+      host: true,
       cors: {
-        origin: ["https://qatium.app", "http://localhost:8888", "http://localhost:3000", "null"],
+        origin: [
+          "https://qatium.app",
+          "http://localhost:8888",
+          "http://localhost:3000",
+          "null"
+        ],
         credentials: true,
         methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
         optionsSuccessStatus: 204
