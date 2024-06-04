@@ -1,10 +1,10 @@
-import { PluginI, SDK } from "@qatium/plugin/engine";
+import { Plugin, SDK } from "@qatium/plugin";
 import { MessageToEngine, MessageToUI } from '../communication/messages';
 
-export class Engine implements PluginI<MessageToEngine> {
+export class MyPlugin implements Plugin {
   selectedElement: ReturnType<SDK["map"]["getSelectedElement"]>;
 
-  run(sdk: SDK) {
+  run() {
     const newSelectedElement = sdk.map.getSelectedElement()
 
     if (newSelectedElement?.id === this.selectedElement?.id) {
@@ -19,7 +19,7 @@ export class Engine implements PluginI<MessageToEngine> {
     })
   }
 
-  onMessage(sdk: SDK, message: MessageToEngine) {
+  onMessage(message: MessageToEngine) {
     if (message.event !== "close-valve") {
       return;
     }
