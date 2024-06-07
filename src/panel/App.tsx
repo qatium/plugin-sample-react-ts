@@ -1,4 +1,4 @@
-import { sendMessage } from '@qatium/plugin/ui';
+import { sendMessage } from '@qatium/sdk/ui';
 import './App.css';
 import { useSelectedElement } from './useSelectedElement';
 import { MessageToEngine } from '../communication/messages';

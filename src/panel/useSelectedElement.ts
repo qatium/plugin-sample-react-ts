@@ -1,4 +1,5 @@
-import { AssetTypes, onMessage } from '@qatium/plugin/ui';
+import { AssetTypes } from '@qatium/sdk';
+import { onMessage } from '@qatium/sdk/ui';
 import { useEffect, useState } from 'react';
 import { MessageToUI, SelectedElement } from '../communication/messages';
 

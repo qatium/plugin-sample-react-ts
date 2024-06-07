@@ -1,4 +1,5 @@
-import { Plugin, SDK } from "@qatium/plugin";
+import { Plugin} from "@qatium/sdk/plugin";
+import { SDK } from "@qatium/sdk";
 import { MessageToEngine, MessageToUI } from '../communication/messages';
 
 export class MyPlugin implements Plugin {
