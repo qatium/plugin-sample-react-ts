@@ -1,6 +1,6 @@
 import { act, render, screen } from "@testing-library/react";
 import App from "./App";
-import { AssetTypes } from "@qatium/plugin/ui";
+import { AssetTypes } from "@qatium/sdk";
 
 
 describe("UI", () => {
