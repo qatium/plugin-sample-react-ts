@@ -1,4 +1,4 @@
-import { mockSDK, aValve } from "@qatium/sdk-testing-library";
+import { mockSDK } from "@qatium/sdk-testing-library";
 import { MyPlugin } from './plugin';
 import { MessageToEngine } from "../communication/messages";
 
@@ -7,10 +7,11 @@ describe("Engine", () => {
     it("should close valve", () => {
       const sdk = mockSDK({
         network: [
-          aValve({
+          {
+            type: "Valve",
             id: "V1",
             connections: []
-          })
+          }
         ]
       });
 
