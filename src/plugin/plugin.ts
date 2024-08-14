@@ -1,4 +1,4 @@
-import { Plugin} from "@qatium/sdk/plugin";
+import { Plugin } from "@qatium/sdk/plugin";
 import { SDK } from "@qatium/sdk";
 import { MessageToEngine, MessageToUI } from '../communication/messages';
 
@@ -12,11 +12,11 @@ export class MyPlugin implements Plugin {
       return;
     }
 
-    this.selectedElement = newSelectedElement;
+    this.selectedElement = newSelectedElement ? { ...newSelectedElement } : undefined;
 
     return sdk.ui.sendMessage<MessageToUI>({
       event: "selected-element",
-      selectedElement: newSelectedElement
+      selectedElement: this.selectedElement
     })
   }
 
