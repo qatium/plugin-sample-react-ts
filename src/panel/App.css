@@ -1,18 +1,9 @@
-h1 {
-  font-size: 18px;
-  font-weight: 700;
-  height: 27px;
+p {
+  color: rgb(180, 180, 202);
 }
 
-button {
-  background-color: rgb(60, 93, 219);
-  color: rgb(255, 255, 255);
-  border: 0;
-  border-radius: 4px;
-  height: 2em;
-  margin: 4px;
-}
-
-button:hover {
-  background-color: #6882e2;
+div {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
